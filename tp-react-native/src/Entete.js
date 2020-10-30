@@ -6,16 +6,16 @@ import { StyleSheet, Text, View } from 'react-native'
  *
  * Il affiche le libellé "Actions !"
  *
- * TODO 1. Corriger le titre de l'application.
+ * TODO 1. Corriger le titre de l'application. x
  *
- * TODO 2. Appliquer le style "entete" à l'élément <View>
+ * TODO 2. Appliquer le style "entete" à l'élément <View> x
  *
- * TODO 3. Appliquer le style "texteEntete" à l'élément <Text>
+ * TODO 3. Appliquer le style "texteEntete" à l'élément <Text> x
  */
 
 const Entete = () => (
-    <View>
-        <Text>Entete</Text>
+    <View style={styles.entete}>
+        <Text style={styles.texteEntete}>Actions</Text>
     </View>
 );
 

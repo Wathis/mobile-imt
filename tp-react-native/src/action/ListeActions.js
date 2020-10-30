@@ -7,7 +7,7 @@ const ListeActions = ({actions, onTermine, onSupprimer}) => {
     return (
         <View>
             {
-                actions.map((action, i) => <UneAction key={i} action={action} onSupprimer={() => onSupprimer(i)} onTerminer={() => onTermine(i)}/>)
+                actions.map((action, i) => <UneAction key={i} action={action} onSupprimer={() => onSupprimer(action.id)} onTerminer={() => onTermine(action.id)}/>)
             }
         </View>
     )

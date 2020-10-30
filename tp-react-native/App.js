@@ -44,18 +44,26 @@ export default class App extends React.Component {
         this.state.actions.push({
             textValue: this.state.texteSaisie,
             isTermine: false,
+            id: Math.random().toString(36).substr(2, 9)
         });
         this.setState({ texteSaisie : ""});
     }
 
-    onTermineAction(actionIndex) {
+    onTermineAction(actionId) {
         const actions = this.state.actions;
-        actions[actionIndex].isTermine = !actions[actionIndex].isTermine;
+        const action =  actions[this.findActionIndex(actionId)];
+        action.isTermine = !action.isTermine;
         this.setState({});
     }
-    onSupprimerAction(actionIndex) {
-        this.state.actions.splice(actionIndex, 1);
+
+    onSupprimerAction(actionId) {
+        const actions = this.state.actions;
+        actions.splice(this.findActionIndex(actionId), 1);
         this.setState({});
+    }
+
+    findActionIndex(actionId) {
+        return this.state.actions.findIndex(action => action.id === actionId);
     }
 
     filterActions() {
@@ -77,7 +85,7 @@ export default class App extends React.Component {
     }
 
     render() {
-        const {texteSaisie, actions} = this.state;
+        const {texteSaisie} = this.state;
 
         return (
             <View style={styles.conteneur}>
@@ -87,7 +95,7 @@ export default class App extends React.Component {
                     <ListeActions actions={this.filterActions()} onTermine={this.onTermineAction} onSupprimer={this.onSupprimerAction}/>
                     <BoutonCreer onValider={() => this.validerNouvelleAction()}/>
                 </ScrollView>
-                <Menu onPressFilterItem={this.onChangeFilter}/>
+                <Menu onPressFilterItem={this.onChangeFilter} currentFilter={this.state.filterType}/>
             </View>
         )
     }
