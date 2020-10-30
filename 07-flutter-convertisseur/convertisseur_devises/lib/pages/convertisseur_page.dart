@@ -89,13 +89,4 @@ class _ConvertisseurDevisePage extends State<ConvertisseurDevisePage> {
       ],
     ));
   }
-
-  List<DropdownMenuItem> _buildDevicesItems() {
-    return Devise.values
-        .map((devise) => DropdownMenuItem<Devise>(
-              child: Text(devise.libelle),
-              value: devise,
-            ))
-        .toList();
-  }
 }
